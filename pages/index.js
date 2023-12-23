@@ -5,9 +5,19 @@ import { MongoClient } from "mongodb";
 // import styles from '../styles/Home.module.css'
 
 function Home(props) {
+  const onAddTask = async (task) => {
+    // console.log(task);
+    // const response = await fetch("/api/complete-todo", {
+    //   method: "PUT",
+    //   body: JSON.stringify(task),
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    // });
+  };
   return (
     <div>
-      <TodayTask tasks={props.tasks} />
+      <TodayTask tasks={props.tasks} onAddTask={onAddTask} />
     </div>
   );
 }

@@ -15,10 +15,11 @@ function TaskForm(props) {
     let task = {
       name,
       description,
+      completed: false,
     };
-    props.onAddTask(task);
     setName("");
     setDescription("");
+    props.onAddTask(task);
   };
 
   return (
@@ -26,12 +27,18 @@ function TaskForm(props) {
       {/* <TodayTask tasks={tasks} /> */}
       <form onSubmit={submitHandler}>
         <div className={styles.control}>
-          <input type="text" placeholder="Task Name" onChange={nameHandler} />
+          <input
+            type="text"
+            placeholder="Task Name"
+            value={name}
+            onChange={nameHandler}
+          />
         </div>
         <div className={styles.control}>
           <input
             type="text"
             placeholder="Description"
+            value={description}
             onChange={descriptionHandler}
           />
         </div>
