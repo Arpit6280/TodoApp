@@ -6,14 +6,14 @@ import { MongoClient } from "mongodb";
 
 function Home(props) {
   const onAddTask = async (task) => {
-    // console.log(task);
-    // const response = await fetch("/api/complete-todo", {
-    //   method: "PUT",
-    //   body: JSON.stringify(task),
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    // });
+    console.log(task);
+    const response = await fetch("/api/complete-todo", {
+      method: "PUT",
+      body: JSON.stringify(task),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
   };
   return (
     <div>
@@ -39,6 +39,7 @@ export async function getStaticProps() {
         name: todo.name,
         description: todo.description,
         id: todo._id.toString(),
+        completed: todo.completed,
       })),
     },
   };

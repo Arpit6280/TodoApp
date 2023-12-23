@@ -13,19 +13,25 @@ function TaskList(props) {
   };
   console.log(props.task);
   return (
-    <div className={styles.lists}>
-      <section className={styles.tasks}>
-        <input
-          type="checkbox"
-          className={styles.checkbox}
-          onClick={checkStatusHandler}
-        />
-        <p>{props.name}</p>
-      </section>
-      <section>
-        <button>Delete</button>
-      </section>
-    </div>
+    <>
+      {!props.completed ? (
+        <div className={styles.lists}>
+          <section className={styles.tasks}>
+            <input
+              type="checkbox"
+              className={styles.checkbox}
+              onClick={checkStatusHandler}
+            />
+            <p>{props.name}</p>
+          </section>
+          <section>
+            <button>Delete</button>
+          </section>
+        </div>
+      ) : (
+        ""
+      )}
+    </>
   );
 }
 

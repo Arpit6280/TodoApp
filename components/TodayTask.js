@@ -17,6 +17,7 @@ function TodayTask(props) {
           key={task.id}
           id={task.id}
           name={task.name}
+          completed={task.completed}
           description={task.description}
           onAddTask={onAddTask}
         />
