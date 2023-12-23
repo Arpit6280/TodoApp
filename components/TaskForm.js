@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import styles from "./TaskForm.module.css";
+import { useRouter } from "next/router";
 
 function TaskForm(props) {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
+  const router = useRouter();
   const nameHandler = (e) => {
     setName(e.target.value);
   };
@@ -20,6 +22,7 @@ function TaskForm(props) {
     setName("");
     setDescription("");
     props.onAddTask(task);
+    router.push("/");
   };
 
   return (

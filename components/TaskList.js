@@ -11,6 +11,11 @@ function TaskList(props) {
     };
     props.onAddTask(task);
   };
+  const deleteHandler = () => {
+    let name = props.name;
+
+    props.onDeleteTask(name);
+  };
   console.log(props.task);
   return (
     <>
@@ -25,7 +30,7 @@ function TaskList(props) {
             <p>{props.name}</p>
           </section>
           <section>
-            <button>Delete</button>
+            <button onClick={deleteHandler}>Delete</button>
           </section>
         </div>
       ) : (

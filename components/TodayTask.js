@@ -7,6 +7,9 @@ function TodayTask(props) {
     console.log(task);
     props.onAddTask(task);
   };
+  const onDeleteTask = (name) => {
+    props.onDeleteTask(name);
+  };
   console.log(tasks);
   console.log("k");
   return (
@@ -20,6 +23,7 @@ function TodayTask(props) {
           completed={task.completed}
           description={task.description}
           onAddTask={onAddTask}
+          onDeleteTask={onDeleteTask}
         />
       ))}
     </div>

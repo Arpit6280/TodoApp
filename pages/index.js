@@ -2,9 +2,11 @@ import Head from "next/head";
 import TaskForm from "../components/TaskForm";
 import TodayTask from "../components/TodayTask";
 import { MongoClient } from "mongodb";
+import { useRouter } from "next/router";
 // import styles from '../styles/Home.module.css'
 
 function Home(props) {
+  const router = useRouter();
   const onAddTask = async (task) => {
     console.log(task);
     const response = await fetch("/api/complete-todo", {
@@ -15,9 +17,24 @@ function Home(props) {
       },
     });
   };
+  const onDeleteTask = async (name) => {
+    console.log(name);
+    const response = await fetch("/api/delete-todo", {
+      method: "DELETE",
+      body: JSON.stringify(name),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    router.push("/");
+  };
   return (
     <div>
-      <TodayTask tasks={props.tasks} onAddTask={onAddTask} />
+      <TodayTask
+        tasks={props.tasks}
+        onAddTask={onAddTask}
+        onDeleteTask={onDeleteTask}
+      />
     </div>
   );
 }
